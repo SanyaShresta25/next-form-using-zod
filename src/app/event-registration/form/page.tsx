@@ -1,12 +1,10 @@
-'use client';
+import { Suspense } from 'react';
+import ClientFormPage from './ClientFormPage';
 
-import React from 'react';
-import { useSearchParams } from 'next/navigation';
-import EventRegistrationForm from '@/components/EventRegistrationForm/EventRegistrationForm';
-
-export default function RegistrationFormPage() {
-  const searchParams = useSearchParams();
-  const initialStep = Number(searchParams.get('step')) || 1;
-
-  return <EventRegistrationForm initialStep={initialStep} />;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ClientFormPage />
+    </Suspense>
+  );
 }
